@@ -28,4 +28,11 @@ Look at the document "UCS671_course_details" to check the MST topics, evaluation
 
 8. **Go through _Applications_ to see that you know your way around**  
    Checkout the Application document to confirm that you have a grip on things
+
+9. **Depth Estimation**
+    You need to be familiar with monocular and stereo camera models along with stereo correspondence python functions to estimate depth. Take a look at the following slides and notebooks.
+https://drive.google.com/drive/folders/1ML2cAFuGYsDOZ9_shXaINvIYuowdfvoa?usp=drive_link
+
+10.** Optimization**  
+Checkout the document "Optimization" for details regarding model formats and conversion
    
