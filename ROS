@@ -8,7 +8,7 @@ While you do this check out the following NVIDIA course "A Beginner's Guide to A
 Once you are ready with the installation, we will understand the following:-
 1. Difference between ROS1 and ROS2 (https://roboticsbackend.com/ros1-vs-ros2-practical-overview/)
 2. The general concept of creating packages,nodes, subscribers, publishers, topics,messages and running them. 
-Look at the following example which demonstrates these.
+Look at the following example which demonstrates subscription,publishing,topic,message concepts with a sample code.
 
 #!/usr/bin/env python3
    
@@ -69,4 +69,17 @@ if __name__ == '__main__':
 
 3. We will use the following link for running our application
 https://github.com/dusty-nv/ros_deep_learning
+
+Follow these steps once you are inside the docker after docker/run.sh --ros=noetic
+
+a. create a catkin workspace and cd into it for creating required packages
+mkdir ~/catkin_ws/src ; cd ~/catkin_ws/src
+catkin_create_pkg dusty_inference rospy std_msgs sensor_msgs cv_bridge image_transport
+
+b. build the package
+cd ~/catkin_ws
+catkin_make
+source devel/setup.bash
+
+
 
