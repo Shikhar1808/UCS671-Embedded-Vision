@@ -1,0 +1,11 @@
+Recall the dusty inference docker you used. You need to cd inside the folder (on your jetson) and run the run.sh but this time with 
+the ros argument. Thias will install a fresh docker with ros packages
+cd jetson-inference
+$ docker/run.sh --ros=noetic  # noetic, foxy, galactic, humble, iron
+
+While you do this check out the following NVIDIA course "A Beginner's Guide to Autonomous Robots".
+
+Once you are ready with the installation, we will understand the following:-
+1. Difference between ROS1 and ROS2 (https://roboticsbackend.com/ros1-vs-ros2-practical-overview/)
+2. The general concept of creating packages,nodes, subscribers, publishers, topics,messages and running them.
+
