@@ -72,6 +72,7 @@ https://github.com/dusty-nv/ros_deep_learning
 
 Follow these steps once you are inside the docker after docker/run.sh --ros=noetic
 
+We want to see how a sample application is run by using camera images.
 a. create a catkin workspace and cd into it for creating required packages
 mkdir ~/catkin_ws/src ; cd ~/catkin_ws/src
 catkin_create_pkg dusty_inference rospy std_msgs sensor_msgs cv_bridge image_transport
@@ -81,7 +82,89 @@ cd ~/catkin_ws
 catkin_make
 source devel/setup.bash
 
-c. 
+c. create the camera_node and processor_node inside the dusty_inference/src folder of catkin_ws
+The files are given in the ros subfolder. Note that you dont need to always write your own camera_node. Jetson offeres it and publishes 
+it for you.You can use it by running the following.
+
+sudo apt-get install ros-noetic-usb-cam
+rosrun usb_cam usb_cam_node   #this is how you use it later
+# Publishes to /usb_cam/image_raw
+
+# or 
+sudo apt-get install ros-noetic-v4l2-camera
+rosrun v4l2_camera v4l2_camera_node     #this is how you use it later
+#Publishes to /camera/image_raw
+
+
+
+d. Inside dusty_inference/CMakeLists.txt, add:
+  catkin_install_python(PROGRAMS
+  src/camera_node.py
+  src/processor_node.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+This means:
+Install camera_node.py and processor_node.py into devel/lib/dusty_inference/
+ROS will then recognize them as runnable nodes. 
+
+e. Rebuild
+cd ~/catkin_ws
+catkin_make
+source devel/setup.bash
+
+This is during development. During deployment they go in install/lib/dusty_inference/
+That happens when you use catkin_make install. But you will not do that now.
+
+f. setup for display in headless mode
+sudo apt-get install ros-noetic-image-view
+
+
+g. Run the nodes
+roscore
+rosrun dusty_inference camera_node.py            #if you are not using the default
+rosrun dusty_inference processor_node.py
+rosrun image_view image_view image:=/processed/image
+
+Note standard rosrun has <package_name> <node_name_executable>, the node_name is already an executable after the make.
+Also you are explicitly telling what to build in the CMakeLists in (d). The image_view is a standard package with executable name 
+image_view, the image parameter is pointing to the topic name (here /processed/image) which is to be used.
+
+You can also use a web view
+sudo apt-get install ros-noetic-web-video-server
+rosrun web_video_server web_video_server
+
+On your host browser run the following:-
+http://<jetson-ip>:8080/stream?topic=/processed/image
+
+h. Instead of running individual nodes, you can also launch all of them together.
+Example: Camera + Processor + Viewer
+dusty_inference/launch/system.launch
+
+#xml sample
+<launch>
+  <!-- Camera node -->
+  <node pkg="v4l2_camera" type="v4l2_camera_node" name="camera_node" output="screen"/>
+
+  <!-- Processor node -->
+  <node pkg="dusty_inference" type="processor_node.py" name="processor_node" output="screen">
+    <!-- Remap so it always listens to /camera/image_raw -->
+    <remap from="/usb_cam/image_raw" to="/camera/image_raw"/>
+  </node>
+
+  <!-- Web video server for browser viewing -->
+  <node pkg="web_video_server" type="web_video_server" name="web_video_server" output="screen"/>
+</launch>
+
+roslaunch dusty_inference system.launch #starts all nodes
+
+
+
+
+
+
+
+
+
 
 
 
