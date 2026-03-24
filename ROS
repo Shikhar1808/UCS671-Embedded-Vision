@@ -1,5 +1,5 @@
 Recall the dusty inference docker you used. You need to cd inside the folder (on your jetson) and run the run.sh but this time with 
-the ros argument. Thias will install a fresh docker with ros packages
+the ros argument. This will install a fresh docker with ros packages
 cd jetson-inference
 $ docker/run.sh --ros=noetic  # noetic, foxy, galactic, humble, iron
 
