@@ -35,4 +35,7 @@ https://drive.google.com/drive/folders/1ML2cAFuGYsDOZ9_shXaINvIYuowdfvoa?usp=dri
 
 10. **Optimization**  
 Checkout the document "Optimization" for details regarding model formats and conversion
+
+11. **ROS**
+    We will install ROS and get started with it. Check the "ROS" document.
    
