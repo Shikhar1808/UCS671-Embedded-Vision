@@ -8,4 +8,5 @@ While you do this check out the following NVIDIA course "A Beginner's Guide to A
 Once you are ready with the installation, we will understand the following:-
 1. Difference between ROS1 and ROS2 (https://roboticsbackend.com/ros1-vs-ros2-practical-overview/)
 2. The general concept of creating packages,nodes, subscribers, publishers, topics,messages and running them.
+(https://park-sangbeom.github.io/posts/how-to-set-up-ROS-on-Jetson/)
 
