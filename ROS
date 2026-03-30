@@ -84,15 +84,16 @@ source devel/setup.bash
 
 c. create the camera_node and processor_node inside the dusty_inference/src folder of catkin_ws
 The files are given in the ros subfolder. Note that you dont need to always write your own camera_node. Jetson offeres it and publishes 
-it for you.You can use it by running the following.
+it for you.You can use it by running the following line 89 or line 94 depending on your camera type. Note the topic name, 
+you have to change it inside your processor_node subscription.
 
 sudo apt-get install ros-noetic-usb-cam
-rosrun usb_cam usb_cam_node   #this is how you use it later
+rosrun usb_cam usb_cam_node   #this is how you use it later in place of line 125, dont run now
 # Publishes to /usb_cam/image_raw
 
 # or 
 sudo apt-get install ros-noetic-v4l2-camera
-rosrun v4l2_camera v4l2_camera_node     #this is how you use it later
+rosrun v4l2_camera v4l2_camera_node     # dont run now, this is how you use it later in place of line 125
 #Publishes to /camera/image_raw
 
 
@@ -121,7 +122,7 @@ sudo apt-get install ros-noetic-image-view
 
 g. Run the nodes
 roscore
-rosrun dusty_inference camera_node.py            #if you are not using the default
+rosrun dusty_inference camera_node.py            #if you are not using the default line 90,91 or 95,96 
 rosrun dusty_inference processor_node.py
 rosrun image_view image_view image:=/processed/image
 
@@ -129,11 +130,11 @@ Note standard rosrun has <package_name> <node_name_executable>, the node_name is
 Also you are explicitly telling what to build in the CMakeLists in (d). The image_view is a standard package with executable name 
 image_view, the image parameter is pointing to the topic name (here /processed/image) which is to be used.
 
-You can also use a web view
+You can also use a web view instead of line 120,127 run the following:
 sudo apt-get install ros-noetic-web-video-server
 rosrun web_video_server web_video_server
 
-On your host browser run the following:-
+On your host browser run the following if you are using web view (line 134) instead of image_view (line 120):-
 http://<jetson-ip>:8080/stream?topic=/processed/image
 
 h. Instead of running individual nodes, you can also launch all of them together.
