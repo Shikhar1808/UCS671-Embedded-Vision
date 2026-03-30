@@ -79,7 +79,7 @@ catkin_create_pkg dusty_inference rospy std_msgs sensor_msgs cv_bridge image_tra
 
 b. build the package
 cd ~/catkin_ws
-catkin_make
+catkin_make  #if you get errors at this step, go to the document "catkin_packages_fix" to resolve them
 source devel/setup.bash
 
 c. create the camera_node and processor_node inside the dusty_inference/src folder of catkin_ws
