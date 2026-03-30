@@ -1,1 +1,35 @@
+As noetic is archived, you may face errors with some dependencies, you may need to build them manually.
 
+Also note each time build fails, clear the previous incomplete build and start again
+rm -rf build devel
+
+1. For building cv_bridge manually 
+You need to be in the catkin_ws/src folder
+
+git clone https://github.com/ros-perception/vision_opencv.git
+cd vision_opencv/
+git checkout noetic
+cd ..
+
+2. For building image_transport manually
+
+git clone https://github.com/ros-perception/image_common.git
+cd image_common/
+git checkout noetic-devel
+cd ..
+
+3. If you get boost errors (cannot find a specific version) in /usr/lib/aarch64-linux-gnu/
+ln -s /usr/lib/aarch64-linux-gnu/libboost_python3.so libboost_python37.so #assumes you have libboost_python3.so but your code is looking for libboost_python37.so
+
+4. yaml-cpp errors
+git clone https://github.com/jbeder/yaml-cpp.git
+cd yaml-cpp/
+git checkout yaml-cpp-0.6.3
+mkdir build
+cd build
+cmake .. -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+make -j4
+sudo make install
+sudo ldconfig
+export CMAKE_PREFIX_PATH=/usr/local:$CMAKE_PREFIX_PATH
+cd ../..
