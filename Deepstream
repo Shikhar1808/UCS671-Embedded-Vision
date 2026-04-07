@@ -1,0 +1,6 @@
+In this exercise we will run a deepstream application on out jetsons
+
+Today you are using the jetson nano 2gb kits (green ones). Note the differences.
+a) you have to connect 2 wires, 1 datacable micro_usb to usba, another power cable (either usb c to plug, alternatively
+usbc 2 usba on your laptop)
+b) here the entire os is on the sdcard, so you do not need to mount or restart docker 
