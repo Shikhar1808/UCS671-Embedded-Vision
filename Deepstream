@@ -11,3 +11,9 @@ e) Once you are in the jetson device check whether you have the deepstream docke
 You need to pull it if not present
 
 f) Run your docker with the docker run command
+
+In your docker check the folder
+/opt/nvidia/deepstream/deepstream-6.0/samples/triton_model_repo/ssd_mobilenet_v1_coco_2018_01_28
+It should have labels.txt, a subdirectory 1, and model file inside the subfolder 1. If it isnt there, download
+the model (ssd_mobilenet_v1_coco) from below, create subfolder 1 and put it there
+https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf1_detection_zoo.md
