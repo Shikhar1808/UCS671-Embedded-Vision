@@ -18,5 +18,11 @@ It should have labels.txt, a subdirectory 1, and model file inside the subfolder
 the model (ssd_mobilenet_v1_coco) from below, create subfolder 1 and put it there
 https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf1_detection_zoo.md
 
+In the /opt/nvidia/deepstream/deepstream-6.0/samples/ folder create a subfolder deepstream-app-tritis
+save your source and config txts in /opt/nvidia/deepstream/deepstream-6.0/samples/configs/deepstream-app-tritis 
+and run the application
+cd deepstream-app-tritis
+deepstream-app -c source1_primary_ssd_mobilenet_v1.txt
+
 You can go through the video https://drive.google.com/file/d/1aP9lQeRCHeciRG38RPGDsYQrBF6FnvLA/view?usp=drive_link 
 for steps to prepare the config files and run the application
