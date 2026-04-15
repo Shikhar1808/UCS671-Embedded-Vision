@@ -22,6 +22,6 @@ source configure.sh
 ./set_nvidia_runtime.sh
 
 #Replace jetbot/docker/base/Dockerfile with the contents in base_Dockerfile
-#Replace 
+#Replace jetbot/setup.py with the contents of setup.py
 
 ./build.sh  #build all containers,  remember to modify the docker files in each folder as discussed
