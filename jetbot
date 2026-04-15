@@ -1,0 +1,31 @@
+You are using the jetbot kits, charge your batteries (black cable), switch on the kit, do not power the jetson usb c, it is already 
+powered from the bottom board with the jumper.
+If you know the ip of the kit (in the display), you can directly use it to ssh (user: csed, password:cslab768)
+If not connect the microusb to the jetson, ssh using 192.168.55.1, set your ip (nmcli) and use it.
+Remember your laptop and jetson should be connected to AI-Lab.
+sudo nmcli device wifi connect AI-Lab password ai@tiet25
+
+In your kits check the following:
+
+sudo docker images
+
+jetbot/jetbot     camera....
+jetbot/jetbot     model....
+jetbot/jetbot     display....
+jetbot/jetbot     jupyter....
+jetbot/jetbot     base....
+
+If you do not see the above images, follow the jetbot_installation document to set the dockers before continuing with the commanda below.
+
+
+sudo systemctl enable docker   # enable docker daemon at boot  (make sure you are inside docker folder of the git repo. i.e. jetbot)
+./enable.sh $HOME   # we'll use home directory as working directory, set this as you please.
+
+#on your laptop browser to connect to the jetbot,jetbot_ip can be seen using ifconfig
+https://<jetbot_ip>:8888 
+
+Follow the notebooks basic_motion, collision_avoidance.
+Hold your kits while running the commands, otherwise it will fall off the desk.
+
+Incase you see driver related errors in your notebook you need to reinstall everything. Follow jetbot_installation document.
+
