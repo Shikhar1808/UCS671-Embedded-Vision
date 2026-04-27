@@ -36,7 +36,7 @@ sudo cat /var/lib/rancher/k3s/server/node-token
 
 6. setting up a client who will use your nodes
 
-scp $HOME/.kube/config user@<client-machine>:/home/user/.kube/config
+scp $HOME/.kube/config user@<client-machine>:/home/user/.kube/config  #run this line on the server
 
 In your config file on the client kit, check that the server_ip is that of your jetson with the server setup.
 server: https://<SERVER_IP>:6443
@@ -52,6 +52,9 @@ sudo mv kubectl /usr/local/bin/
 
 # Verify installation
 kubectl version --client
+
+export KUBECONFIG=$HOME/.kube/config
+
 
 
 7. creating a pod
