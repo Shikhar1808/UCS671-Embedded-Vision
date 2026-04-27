@@ -1,4 +1,4 @@
-kubectl apply -f test_k3s.yaml  #your_pod
+kubectl apply -f test_k3s.yaml/deployment.yaml  #your_pod or deployment
 kubectl apply -f torch-service.yaml  #your_service
 kubectl get svc torch-service
 
